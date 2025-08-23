@@ -1,0 +1,18 @@
+///////////# Docker file for java image ////////////
+$FROM openjdk :17-jdk-alpine
+#create the folder where the app cpde will be store 
+$WORKDIR /App
+#copy the source code from your host machine to your container
+$COPY src/main.java  /App/main.java 
+#compile the application code
+$RUN  javac main.java
+#run the application 
+CMD ["java","main"]
+
+//////////# Docker file for node image///////////
+$FROM node: 12.2.0-alpine
+$WORKDIR /node
+$COPY..
+$RUN npm install
+$RUN npm run test
+$CMD ["node","app.js"]
