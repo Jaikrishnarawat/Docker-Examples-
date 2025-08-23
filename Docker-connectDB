@@ -1,0 +1,6 @@
+/////////If we need to connect DB with docker///////////////
+$docker exec -it (meention the container id) bash
+$bash-5.1 # (#which is MySQL)
+$bash-5.1# MYSQL -u root -p
+#enter the password
+#now we connect with MYSQL  
