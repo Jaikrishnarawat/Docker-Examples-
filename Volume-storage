@@ -3,7 +3,7 @@
 $docker volume create pgdata
 #Run a PostgreSQL Container Using the Volume
 $docker run -d \ --name my-postgres \ -e POSTGRES_PASSWORD=mysecretpassword \ -v pgdata:/var/lib/postgresql/data \ postgres
-#Check the Volume via inspect( it will show you exaact path wwhere the data  is stiored in container)
+#Check the Volume via inspect( it will show you exact path where the data is stored in container)
 $docker volume inspect pgdata
 #Remove and Recreate the Container
 $docker rm -f my-postgres 
