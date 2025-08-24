@@ -1,0 +1,82 @@
+////////////////#YAML file 
+version: '3.9'
+
+services:
+  web:
+    build: ./app
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
+
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: mydb
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - web
+
+volumes:
+  pgdata:
+
+////////////////////#project Structure 
+Project/
+│
+├── docker-compose.yaml
+├── app/
+│   ├── Dockerfile
+│   ├── app.py
+│   └── requirements.txt
+│
+├── nginx/
+│   └── nginx.conf
+
+
+/////////#docker file 
+FROM python:3.9-slim
+
+WORKDIR /app
+
+COPY ..
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . .
+
+CMD ["python", "app.py"]
+
+
+//////#python-code
+from flask import Flask
+import psycopg2
+import os
+
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+    try:
+        conn = psycopg2.connect(
+            dbname=os.environ.get('POSTGRES_DB', 'mydb'),
+            user=os.environ.get('POSTGRES_USER', 'myuser'),
+            password=os.environ.get('POSTGRES_PASSWORD', 'mypassword'),
+            host='db',
+            port=5432
+        )
+        return "Connected to the database!"
+    except Exception as e:
+        return f"Database connection failed: {str(e)}"
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000)
+
