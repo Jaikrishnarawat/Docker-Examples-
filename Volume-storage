@@ -1,0 +1,10 @@
+/////////during the 2-tier application when data deleted  by some one via, so you run volume command///////////
+#Create a Docker Volume
+$docker volume create pgdata
+#Run a PostgreSQL Container Using the Volume
+$docker run -d \ --name my-postgres \ -e POSTGRES_PASSWORD=mysecretpassword \ -v pgdata:/var/lib/postgresql/data \ postgres
+#Check the Volume via inspect( it will show you exaact path wwhere the data  is stiored in container)
+$docker volume inspect pgdata
+#Remove and Recreate the Container
+$docker rm -f my-postgres 
+$docker run -d \ --name my-postgres \ -e POSTGRES_PASSWORD=mysecretpassword \ -v pgdata:/var/lib/postgresql/data \ postgres
