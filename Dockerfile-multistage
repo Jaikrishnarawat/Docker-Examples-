@@ -1,5 +1,5 @@
 /////// use to compress the size of the docker file //////
-stage 1:- when base image is 995mb - 1.04 gb
+stage 1:- when base image is 995mb - docker file will be about to 1.04 gb
 $FROM Python:3.7 AS builder
 $WORKDIR /app
 $Copy requirement.txt
@@ -7,7 +7,7 @@ $RUN pip install -r requirment.txt
 
 
 
-Stage 2:- Final stage base image will be 102 mb just bcoz of we use slim image insted of using python full image 
+Stage 2:- Final stage base image will be 102 mb just bcoz of we use slim image insted of using python full image docker file will be about to 128 mb
 
 $FROM Python:3.7 slim 
 $WORKDIR /app
