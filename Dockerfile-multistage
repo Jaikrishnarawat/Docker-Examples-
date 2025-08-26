@@ -1,0 +1,16 @@
+/////// use to compress the size of the docker file //////
+stage 1:- when base image is 995mb - 1.04 gb
+$FROM Python:3.7 AS builder
+$WORKDIR /app
+$Copy requirement.txt
+$RUN pip install -r requirment.txt
+
+
+
+Stage 2:- Final stage base image will be 102 mb just bcoz of we use slim image insted of using python full image 
+
+$FROM Python:3.7 slim 
+$WORKDIR /app
+$Copy -from=builder ((location of requirements.txt file installed) /use/local/lib/pyhton3.7/site-package/  /use/local/lib/pyhton3.7/site-package)
+$Copy ..
+ENTRYPOINT ["python","run.py"]
