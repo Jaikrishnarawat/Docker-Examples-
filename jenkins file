@@ -27,3 +27,6 @@ pipeline{
 
     }
 }
+
+
+we also do credential binding (no one can see the password )
