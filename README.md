@@ -1,2 +1,6 @@
-# Docker-Examples-
-example of docker
+This Repo contains all the document regarding Devops
+GIT (VCS):- Version control systems (VCS), also known as source control or revision control systems, are essential tools used to manage and track changes to files and code over time. Their primary purpose is to facilitate collaborative development, maintain a history of modifications, and provide mechanisms for managing different versions of a project.
+Docker File:- A Dockerfile is a text file containing a set of instructions for building a Docker image. Its primary purpose is to define the steps required to create a reproducible and custom container image.
+Docker Image:- A Docker image is a lightweight, standalone, executable package that includes everything needed to run an application: code, runtime, system tools, system libraries, and settings. It is essentially a snapshot of a container's filesystem. 
+Jenkins Files:- A Jenkinsfile is used to define and manage Jenkins Pipelines as code, offering several key advantages for Continuous Integration and Continuous Deployment (CI/CD) workflows.
+We need Devops to automate, streamline, and manage complex, multi-step processes by coordinating various components and systems, reducing manual effort and errors, ensuring reliability, improving efficiency, and providing better visibility into workflows. Orchestration helps by handling dependencies, scaling resources, and facilitating consistency, which leads to faster delivery of business value, cost savings, and improved agility in IT operations. 
