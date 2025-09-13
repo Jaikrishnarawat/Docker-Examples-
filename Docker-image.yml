@@ -1,4 +1,7 @@
 ////////////////#YAML file 
+# docker image file are saved in .yaml 
+Tools such as Ansible and Kubernetes use YAML to define how tasks should be 
+automated and how applications should be deployed, scaled, and managed. /////////////////
 version: '3.9'
 
 services:
