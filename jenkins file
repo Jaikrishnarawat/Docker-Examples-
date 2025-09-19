@@ -32,3 +32,37 @@ pipeline{
 
 
 we also do credential binding (no one can see the password )
+
+
+
+
+
+/////////if we want to run parallel command in jenkins, so syntax will be //////
+
+pipeline {
+    agent any
+    stages {
+        stage('Run Parallel Branches') {
+            parallel {
+                stage('Branch A') {
+                    steps {
+                        echo 'This is branch A'
+                        sh 'sleep 5' // Example command
+                    }
+                }
+                stage('Branch B') {
+                    steps {
+                        echo 'This is branch B'
+                        sh 'ls -l' // Example command
+                    }
+                }
+                stage('Branch C') {
+                    steps {
+                        echo 'This is branch C'
+                        sh 'pwd' // Example command
+                    }
+                }
+            }
+        }
+    }
+}
