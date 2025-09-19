@@ -57,7 +57,7 @@ def call(){
 
 
 
-\\\\\\\\\\ if we just want to use any above groovy code, so this will be  syntax\\\\\\\\\\\\\\\
+\\\\\\\\\\ if we just want to use any above groovy code in jenkins file, so syntax will be as followed\\\\\\\\\\\\\\\
 
 stage ("Sonarcube =  code quality test") {
 step{
