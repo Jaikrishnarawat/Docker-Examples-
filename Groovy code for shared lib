@@ -54,3 +54,15 @@ Update trivy_scan.groovy
 def call(){
   sh "trivy fs ."
 }
+
+
+
+\\\\\\\\\\ if we just want to use any above groovy code, so this will be  syntax\\\\\\\\\\\\\\\
+
+stage ("Sonarcube =  code quality test") {
+step{
+script{
+sonarqube_code_quality()
+}
+}
+}
