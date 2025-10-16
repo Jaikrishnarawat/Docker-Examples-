@@ -97,3 +97,143 @@ Ansible playbooks are written in YAML and used to automate tasks across systems.
       copy:
         src: /home/user/index.html
         dest: /var/www/html/index.html
+
+
+
+
+
+
+
+Absolutely! In IT companies, Ansible playbooks are widely used for automating infrastructure tasks, application deployment, configuration management, and more. 
+
+
+
+🖥️ 1. Server Provisioning (Linux)
+ 
+`yaml
+- name: Provision Linux servers
+  hosts: new_servers
+  become: yes
+  tasks:
+    - name: Update package cache
+      apt:
+        update_cache: yes
+
+    - name: Install essential packages
+      apt:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - git
+        - curl
+        - vim
+`
+
+📌 Used for setting up new servers with baseline tools.
+
+
+
+🌐 2. Web Application Deployment (e.g., Node.js)
+
+`yaml
+- name: Deploy Node.js App
+  hosts: app_servers
+  become: yes
+  tasks:
+    - name: Install Node.js
+      apt:
+        name: nodejs
+        state: present
+
+    - name: Copy app files
+      copy:
+        src: /local/path/app/
+        dest: /var/www/app/
+        recursive: yes
+
+    - name: Start app with PM2
+      command: pm2 start /var/www/app/app.js
+`
+
+📌 Automates deployment of a Node.js application.
+
+
+
+🔐 3. Security Hardening
+
+`yaml
+- name: Basic Security Setup
+  hosts: all
+  become: yes
+  tasks:
+    - name: Disable root SSH login
+      lineinfile:
+        path: /etc/ssh/sshd_config
+        regexp: '^PermitRootLogin'
+        line: 'PermitRootLogin no'
+
+    - name: Restart SSH service
+      service:
+        name: ssh
+        state: restarted
+`
+
+📌 Used to enforce security policies across servers.
+
+
+
+📦 4. Docker Installation
+
+`yaml
+- name: Install Docker
+  hosts: docker_hosts
+  become: yes
+  tasks:
+    - name: Install dependencies
+      apt:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - apt-transport-https
+        - ca-certificates
+        - curl
+        - gnupg
+
+    - name: Add Docker GPG key
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+
+    - name: Install Docker
+      apt:
+        name: docker-ce
+        state: present
+`
+
+📌 Sets up Docker on target machines for containerized deployments.
+
+
+
+📊 5. Monitoring Agent Installation (e.g., Prometheus Node Exporter)
+
+`yaml
+- name: Install Prometheus Node Exporter
+  hosts: monitoring_targets
+  become: yes
+  tasks:
+    - name: Download Node Exporter
+      get_url:
+        url: https://github.com/prometheus/nodeexporter/releases/download/v1.5.0/nodeexporter-1.5.0.linux-amd64.tar.gz
+        dest: /tmp/node_exporter.tar.gz
+
+    - name: Extract and move binary
+      unarchive:
+        src: /tmp/node_exporter.tar.gz
+        dest: /usr/local/bin/
+        remote_src: yes
+
+    - name: Start Node Exporter
+      command: /usr/local/bin/node_exporter &
+`
+
+📌 Used to install monitoring agents for infrastructure visibility.
