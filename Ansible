@@ -16,8 +16,23 @@ Server_2 ansible_host = 18.209.43.91
 Server_3 ansible_host = 18.209.43.91
 
 
+[{
+
+Syntax of Ansible 
 
 
+Key-Value Pairs (Mappings): Used for defining parameters, variables, and other configurations. Keys are followed by a colon and a space, then the value.
+Code
+
+    key: value
+
+Lists (Sequences): Represented by a hyphen (-) followed by a space for each item in the list.
+Code
+
+    - item1
+    - item2
+
+}]
 
 
 Ansible playbooks are written in YAML and used to automate tasks across systems.
