@@ -1,4 +1,4 @@
-It is Infrastructure providing (creating) tool. extention will be .tf
+It is Infrastructure provisioning (creating) tool. extention will be .tf
 
 teraform syntax :-
 
