@@ -31,3 +31,20 @@ teraform graph :- generate a visual dependency graph of your teraform resource.
 teraform state :- used to inspect , move or remove item in the teraform state file manually.
 
 debugging teraform:- when teraform behave unexpectedly ( error, worng , resource change , provide issue ) you can enable debugging on logging too se what going on internally. 
+
+
+
+
+
+example:- Creating multiple EC2 instance in AWS 
+
+
+resource "aws_instance" "web"{
+        count = 3
+        ami = ami-0679hffhjjbcddtj
+        instance-type = "t2.micro"
+
+tag {
+Name = "web-server-${count.index}"
+}
+}
